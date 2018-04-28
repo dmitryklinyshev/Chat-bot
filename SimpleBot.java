@@ -1,3 +1,4 @@
+package SimpleBot;
 import java.util.*;
 import java.util.regex.*;
 
@@ -21,9 +22,9 @@ public class SimpleBot {
 			// hello
 			put("хай", "hello");
 			put("пр[ие]вет", "hello");
-			put("зд[оа]рово", "hello");
-			put("здравствуй", "hello");
-			put("здравствуйте", "hello");
+			put("зд[оа]ров[оа]", "hello");
+			put("здра[вс]твуй", "hello");
+			put("здра[вс]твуйте", "hello");
 			// hello|e
 			put("hi", "hello|e");
 			put("hello", "hello|e");
@@ -35,15 +36,18 @@ public class SimpleBot {
 			put("добрый вечер", "good evening");
 			put("доброй ночи", "good night");
 			// who
-			put("кто\\s.*ты", "who");
-			put("[вты]\\s.*кто", "who");
+			put("кто\\s.*[вт]ы", "who");
+			put("[вт]ы\\s.*кто", "who");
 			// who|e
 			put("who\\s.*you", "who|e");
 			// name
 			put("как\\s.*зовут", "name");
 			put("как\\s.*имя", "name");
 			put("есть\\s.*имя", "name");
-			put("какое\\s.*имя", "name");
+			put("как\\s.*зовут", "name");
+			put("какое\\s.*погоняло", "name");
+			put("зовут\\s.*как", "name");
+			put("имя", "name");
 			// name|e
 			put("what\\s.*name", "name|e");
 			// howareyou
@@ -69,13 +73,16 @@ public class SimpleBot {
 			put("what\\s.*prefer", "whatdoyoulike|e");
 			put("what\\s.*favourite", "whatdoyoulike|e");
 			// iamfeelling
+		/*	
 			put("кажется", "iamfeelling");
 			put("чувствую", "iamfeelling");
 			put("испытываю", "iamfeelling");
+		
 			// iamfeelling|e
 			put("feel", "iamfeelling|e");
 			put("sure", "iamfeelling|e");
 			put("hope", "iamfeelling|e");
+		
 			// yes
 			put("^да", "yes");
 			put("согласен", "yes");
@@ -84,6 +91,9 @@ public class SimpleBot {
 			put("yeah", "yes|e");
 			put("right", "yes|e");
 			put("ok", "yes|e");
+			
+		                                                         		*/ //нах это нужно вообще??????
+			
 			// whattime
 			put("который\\s.*час", "whattime");
 			put("сколько\\s.*время", "whattime");
@@ -94,25 +104,30 @@ public class SimpleBot {
 			put("can\\s.*give","giving|e");
 
 			//gotosite
-			put("приемн(ой|ая) ко(м|мм)и(с|сс)и(я|и|й)*", "gotosite");
+			put("приёмн(ой|ая|ую)\\s.*ко(м|мм)и(с|сс)и(я|и|ю)", "gotosite");
 			//gotosite|e
 			put("can\\s.*open website", "gotosite|e");
-			put("балл*", "Проходной балл");
+			
+			//put("балл*", "Проходной балл");
 
 			put("what\\s.*the passing scores", "the passing scores");
 			put("стоит\\s.|нужно заплатить\\s.*обучение*","Стоимость обучения");
-			put("обучение*","Процесс обучения");
+			put("стоимост[ьию]\\s.*обучени[ияе]*","Стоимость обучения");
+			put("процес(с|сом|а|у|се)\\s.*обучени[яие]*","Процесс обучения");
 			put("what\\s.*price for education", "educationprice");
 			put("how much\\s.* education", "educationprice");
-			put("индивидуальные достижения*|дополнительные баллы*", "Дополнительные баллы");
+			put("индивидуальны(е|х|м|ми)\\s.*достижени(я|й|ям|ями|х)*|дополнительны(е|х|м|ми|х)\\s.*ба(л|лл)(ы|ов|ам|ами|ах)*", "Дополнительные баллы");
 			put("scores\\s.*for\\s.*individual achievements", "addscores");
 			put("how much scores\\s.*for\\s.*certificate", "addscores");
 			put("how much scores\\s.*for\\s.*diploma","addscores");
 
 			put("поступить*", "Информация о поступлении");
+			put("поступлени(е|и|я|ю|ем)*", "Информация о поступлении");
+			
 			put("how\\s.*apply", "applying");
-			put("целевой при[её]м*", "Целевой приём");
-			put("сайт [УуЛлГгТтУу]*", "Сайт УЛГТУ");
+			put("целево(й|го|му|м)\\s.*при(её)м(а|у|ом|е)*", "Целевой приём");
+			put("сай(та|ту|том|те|т)\\s.*улгту*", "Сайт УЛГТУ");
+			put("сай(та|ту|том|те|т)\\s.*полите(x|ха)*", "Сайт УЛГТУ");
 			put("спорт*", "спорт");
 			put("ф[ао]культет*", "факультеты");
 			put("what сourse directory", "directory");
@@ -122,20 +137,21 @@ public class SimpleBot {
 			put("мест*", "Количество мест");
 			put("seats for admission", "seats for admission");
 
-			put("сдавать|вступительные испытания*", "Вступительные испытания");
+			put("сдавать|вступительны(е|х|м|ми|х)\\s.*испытани(я|й|ям|ями|ях)*", "Вступительные испытания");
 			put("what\\s.*exams", "exams");
-			put("группа*", "Группа ВК");
+			put("гру(п|пп)а*", "Группа ВК");
 			put("vk*", "vk");
-			put("кафедры*", "Кафедры");
+			put("кафедр[аыеу]*", "Кафедры");
 			put("departments", "departments");
-			put("зачисленные*", "Приказы");
-			put("приказы*", "Приказы");
+			put("зачисле(н|нн)*", "Приказы");
+			put("приказ*", "Приказы");
 			put("enrolled", "enrolled");
 
 			// bye
-			put("прощай*", "bye");
+			put("пр[ао]щай*", "bye");
 			put("увидимся*", "bye");
 			put("до\\s.*свидания", "bye");
+			put("п[ао]ка*", "bye");
 			// bye|e thank
 			put("bye", "bye|e");
 			put("thank\\s.*", "thank");
@@ -146,6 +162,8 @@ public class SimpleBot {
 			put("real talk", "real");
 
 			put("помоги*", "помощь");
+			put("помощь*", "помощь");
+			put("хелп*", "помощь");
 
 		}};
 	final Map<String, String> ANSWERS_BY_PATTERNS = new HashMap<String, String>() {/**
@@ -171,8 +189,8 @@ public class SimpleBot {
 			put("whatdoyoudoing|e", "I can find anythink you like!");
 			put("чтотыделаешь", "Я упрощаю работу с сайтом и экономлю ваше время)");
 			put("whatdoyoulike|e", "I really fond of helping people and i dream of making the world brighter and life easier");
-			put("iamfeelling", "Как давно это началось? Расскажите чуть подробнее.");
-			put("gotosite","http://pk.ulstu.ru");
+			//put("iamfeelling", "Как давно это началось? Расскажите чуть подробнее.");
+			put("gotosite","Вы сейчас на нём, но если нужно то вот http://pk.ulstu.ru");
 			put("gotosite|e","http://pk.ulstu.ru");
 			put("yes", "Согласие есть продукт при полном непротивлении сторон.");
 			put("yes|e", "Ok my friend");
